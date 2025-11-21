@@ -1,0 +1,107 @@
+<!-- Κείμενο αρχικής οθόνης -->
+<section aria-label="{{t 'home.intro.ariaLabel'}}">
+
+    <p>
+        {{t 'home.intro.introText1'}} <span class="bold">{{tf company "name"}}</span>{{t 'home.intro.introText2'}} 
+    </p>
+
+    <p>
+        {{t 'home.intro.complianceText'}}
+    </p>
+
+    <p>
+        {{t 'home.intro.eligibilityText'}}
+    </p>
+
+    <!-- Κουμπί υποβολής -->
+    <div class="center-contents">
+        <button type="button" class="btn btn-primary my-3 text-center" data-bs-toggle="modal" data-bs-target="#infoModal" >{{t 'home.intro.submitButton'}}</button>
+    </div>
+
+</section>
+
+
+
+<!-- Ενημερωτικό παράθυρο -->
+<section aria-label="{{t 'home.modal.ariaLabel'}}">
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="infoModalLabel">{{t 'home.modal.title'}}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+        <!-- Κείμενο pop-up -->
+          <div class="modal-body">
+            <p>
+                {{t 'home.modal.managementText1'}} <span class="bold">{{tf company "name"}}</span>{{t 'home.modal.managementText2'}}
+            </p>
+            <p>
+                {{t 'home.modal.channelsIntro'}} 
+            </p>
+            <ul>
+                <li>{{t 'home.modal.channel1'}}</li>
+                <li>{{{t 'home.modal.channel2' company=company}}}</li>
+                <li>{{{t 'home.modal.channel3' company=company}}}</li>
+                <li>{{{t 'home.modal.channel4' company=company}}} ({{tf company "hours"}})</li>
+            </ul>
+            <p id="torinfo">
+                {{{t 'home.modal.torInfo'}}}
+            </p>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t 'home.modal.closeButton'}}</button>
+            <a id="formlink" href="./new" class="btn btn-primary">{{t 'home.modal.proceedButton'}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<hr>
+
+<section aria-label="{{t 'home.viewExistingReport.ariaLabel'}}">
+
+    <p class="pb-1">{{t 'home.viewExistingReport.description'}}</p>
+
+    <form method="POST" action="./case" enctype="application/x-www-form-urlencoded">
+    <div class="">
+        <label for="case" class="form-label mt-3">{{t 'home.viewExistingReport.reportNumberLabel'}}</label>
+        <input name="id" type="text" class="form-control" id="case" value="{{caseId}}" required>
+    </div>
+    <div class="">
+        <label for="pin" class="form-label mt-3">{{t 'home.viewExistingReport.pinLabel'}}</label>
+        <input name="pin" type="password" class="form-control" id="pin">
+    </div>
+    <div class="center-contents">
+        <button type="submit" class="btn btn-primary mt-5" required>{{t 'home.viewExistingReport.viewReportButton'}}</button>
+    </div>
+    </form>
+
+</section>
+
+
+
+
+<script>
+    if (window.location.pathname.endsWith('/whistle')) {window.location.href = window.location + "/"}
+    let url = new URL(window.location.href);
+    let company = url.searchParams.get("company");
+
+    let onionWebsite = 'https://4ilvgtc46d7dtfv22cxtk7iwad2a5ovda7szu2jk4zyqibpalpwfqbyd.onion';     // onion URL
+    if (company) {
+        document.getElementById("formlink").href = "./new?company=" + company;
+        let onionLink = onionWebsite + '/home?company=' + company;
+        document.getElementById("onionlink").innerText = onionLink;
+        document.getElementById("onionlink").href = onionLink;
+    }
+    if (window.location.href.includes('.onion')) {
+        document.getElementById("torinfo").style.display = "none";
+    }
+</script>

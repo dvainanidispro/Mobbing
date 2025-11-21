@@ -1,0 +1,102 @@
+
+<h1 class="center-left">{{t 'viewcase.title'}} {{whistle.id}}</h1>
+
+
+<section aria-label="{{t 'viewcase.caseDetails.ariaLabel'}}">
+
+    <h2>{{t 'viewcase.caseDetails.heading'}}</h2>
+
+    <label>{{t 'viewcase.caseDetails.violationDate'}}</label>
+    <p>{{tl "date" whistle.date}}</p>
+
+    <label>{{t 'viewcase.caseDetails.individuals'}}</label>
+    <p>{{whistle.people}}</p>
+
+    <label>{{t 'viewcase.caseDetails.detailedDescription'}}</label>
+    <p>{{whistle.description}}</p>
+
+    <label>{{t 'viewcase.caseDetails.caseStatus'}}</label>
+    <p>{{tl "status" whistle.status}}</p>
+
+    {{#if whistle.filenames}}
+    <label>{{t 'viewcase.caseDetails.supportingFiles'}}</label>
+    <ul>
+        {{#each whistle.filenames}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+</section>
+
+
+<hr>
+
+
+<section aria-label="{{t 'viewcase.messages.ariaLabel'}}">
+
+    <h2>{{t 'viewcase.messages.heading'}}</h2>
+
+    {{#each whistle.messages}}
+        <div class="row">
+            <div class="col-md-2 pt-3">
+                <div class="text-muted">{{tl "messages" role}}</div>
+                <div class="text-muted">{{date}}</div>
+                <div class="text-muted italics small">{{tl "messages" readByCompany}}</div>
+            </div>
+            <div class="col-md-10 my-2">
+                <textarea class="form-control" readonly disabled>{{text}}</textarea>
+            </div>
+            <hr class="my-1 d-md-none"->
+        </div>
+    {{/each}}
+
+
+    <form method="POST" action="./pushmessage" enctype="multipart/form-data">
+        <div class="my-3">
+            <label for="newmessage">{{t 'viewcase.messages.newMessageLabel'}}</label>
+            <textarea class="form-control" id="newmessage" name="newmessage" placeholder="{{t 'viewcase.messages.newMessagePlaceholder'}}" rows="4" required></textarea>
+            <div class="form-text">
+                {{t 'viewcase.messages.warningText'}}
+            </div>
+        </div>
+        <input type="hidden" name="caseId" value="{{whistle.id}}">
+
+        <div class="mb-3 mt-3">
+            <label for="evidence" class="form-label">{{t 'viewcase.messages.newEvidenceLabel'}}</label>
+            <input type="file" class="form-control" id="evidence" name="evidence" multiple data-input-size="10">
+        </div>
+
+        <button type="submit" class="btn btn-success my-2" id="submitBtn">{{t 'viewcase.messages.sendButton'}}</button>
+    </form>
+
+</section>
+
+
+
+
+<hr>
+
+
+
+<script>
+    document.querySelectorAll('input[data-input-size]').forEach(inputElement=>{
+        inputElement.addEventListener("change",function(el){
+            let maxSizeInMB = parseInt(this.getAttribute("data-input-size"));
+            let maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+            let sumSize = 0;
+            [...this.files].forEach(file=>{
+                sumSize += file.size;
+                if(file.size > maxSizeInBytes){
+                    alert(`{{t 'viewcase.alerts.fileSizeExceeded'}}`);
+                    this.value = "";
+                } else if (sumSize > maxSizeInBytes) {
+                    alert(`{{t 'viewcase.alerts.totalSizeExceeded'}}`);
+                    this.value = "";
+                }
+            });
+        });
+    });
+
+
+</script>

@@ -1,0 +1,34 @@
+<h1 class="center-left">{{t "newcaseconfirm.title"}}</h1>
+<p>{{t "newcaseconfirm.description"}}</p>
+
+
+<table class="table table-striped table-primary table-hover">
+    <tr>
+        <td>{{t "newcaseconfirm.reportNumber"}}</td>
+        <td>{{whistle.id}}</td>
+    </tr>
+    <tr>
+        <td>{{t "newcaseconfirm.pin"}}</td>
+        <td>{{whistle.pin}}</td>
+    </tr>
+</table>
+
+<p></p>
+
+
+<div class="alert alert-danger" role="alert" aria-live="polite">
+    <div><span class="bold">{{t "newcaseconfirm.warning"}}</span></div>
+    <div class="center-contents"><button id="showInstuctions" class="btn btn-danger my-3">{{t "newcaseconfirm.confirmButton"}}</button></div>
+</div>
+
+<div id="instructions" class="d-none alert alert-success" role="alert" aria-live="polite">{{t "newcaseconfirm.thankYou"}} <a href="https://whistleblowing-greece.gr/whistle?company={{whistle.companyID}}" target="_blank">{{t "newcaseconfirm.trackPage"}}</a>
+{{t "newcaseconfirm.usingCredentials"}}</div>
+
+
+<script>
+    document.getElementById('showInstuctions').addEventListener('click', function() {
+        document.getElementById('instructions').classList.remove('d-none');
+        document.getElementById('showInstuctions').classList.add('d-none');
+    });
+</script>
+

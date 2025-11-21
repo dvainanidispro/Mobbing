@@ -1,0 +1,133 @@
+<div>
+
+    <h1>
+        {{t 'privacy.title'}} {{tf company "name"}}
+    </h1>
+
+    <h2>
+        {{t 'privacy.introduction.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.introduction.paragraph1a'}}{{tf company "name"}}{{t 'privacy.introduction.paragraph1b'}}
+    </p>
+    <p>
+        {{t 'privacy.introduction.paragraph2'}}
+    </p>
+    <ul>
+        <li>{{t 'home.modal.channel1'}}</li>
+        <li>{{{t 'home.modal.channel2' company=company}}}</li>
+        <li>{{{t 'home.modal.channel3' company=company}}}</li>
+        <li>{{{t 'home.modal.channel4' company=company}}} ({{tf company "hours"}})</li>
+    </ul>
+
+    <h2>
+        {{t 'privacy.contactDetails.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.contactDetails.paragraph'}} {{tf company "name"}}, 
+        {{tf company "address"}}, email: <a href="mailto:{{company.email}}">{{company.email}}</a>.
+    </p>
+
+    <h2>
+        {{t 'privacy.dpoDetails.heading'}}
+    </h2>
+    <p>
+        {{{t 'privacy.dpoDetails.paragraph' company=company}}}
+    </p>
+
+    <h2>
+        {{t 'privacy.dataCollection.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.dataCollection.paragraph1'}}
+        <ul>
+            <li>
+                {{t 'privacy.dataCollection.list1'}}
+            </li>
+            <li>
+                {{t 'privacy.dataCollection.list2'}}
+            </li>
+        </ul>       
+    </p>
+    <p>
+        {{t 'privacy.dataCollection.paragraph2'}}
+    </p>
+    <h2>
+        {{t 'privacy.purposes.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.purposes.paragraph'}}
+    </p>
+    <h2>
+        {{t 'privacy.disclosure.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.disclosure.paragraph'}}
+    </p>
+    <h2>
+        {{t 'privacy.retention.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.retention.paragraph'}}
+    </p>
+    <h2>
+        {{t 'privacy.protection.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.protection.paragraph'}}
+    </p>
+    <h2>
+        {{t 'privacy.rights.heading'}}
+    </h2>
+    <p>
+        {{t 'privacy.rights.intro'}}
+    </p>
+    <p>
+        {{t 'privacy.rights.intro2'}}
+    </p>
+    <ol>
+        <li>
+            {{{t 'privacy.rights.access'}}}
+        </li>
+        <li>
+            {{{t 'privacy.rights.rectification'}}}
+        </li>
+        <li>
+            {{{t 'privacy.rights.erasure'}}}
+        </li>
+        <li>
+            {{{t 'privacy.rights.restriction'}}}
+        </li>
+        <li>
+            {{{t 'privacy.rights.objection'}}}
+        </li>
+    </ol>
+    <p>
+        {{{t 'privacy.rights.contact' company=company}}}
+    </p>
+    <p>
+        {{{t 'privacy.rights.complaint'}}}
+    </p>
+    <p>
+        {{t 'privacy.specialProvisions.intro'}}
+        <ul>
+            <li>
+                {{t 'privacy.specialProvisions.provision1'}}
+            </li>
+            <li>
+                {{t 'privacy.specialProvisions.provision2'}}
+            </li>
+        </ul>  
+    </p>
+    <p>
+        {{t 'privacy.specialProvisions.safeguards'}}
+    </p>
+    <p>
+        {{t 'privacy.specialProvisions.finalNote'}}
+    </p>
+
+<div class="center-contents m-4">
+    <button class="btn btn-primary" onclick="javascript:history.back()">{{t 'privacy.backButton'}}</button>
+</div>
+
+</div>
