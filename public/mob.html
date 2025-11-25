@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="8;url=https://europe-west3-mobbing-reporting-app.cloudfunctions.net/mobbing/">
+    <meta http-equiv="refresh" content="8;url=https://europe-west3-mobbing-app.cloudfunctions.net/mob/">
     <title>Ανακατεύθυνση...</title>
 </head>
 
@@ -25,10 +25,10 @@
             document.getElementById('message').textContent = 'Redirecting to your Organization\'s Code of Ethics application...';
         }
     }
-    // 2. Ανακατεύθυνση στη σελίδα whistle με τα ίδια get parameters (company, lang, κλπ)
+    // 2. Ανακατεύθυνση στη σελίδα mob με τα ίδια get parameters (company, lang, κλπ)
     window.onload = function() {
         const params = window.location.search;
-        const redirectUrl = "https://europe-west3-mobbing-app.cloudfunctions.net/mobbing/home" + params;
+        const redirectUrl = "https://europe-west3-mobbing-app.cloudfunctions.net/mob/home" + params;
         window.location.href = redirectUrl;
     }
 </script>

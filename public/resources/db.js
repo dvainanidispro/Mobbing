@@ -153,8 +153,8 @@ DB.pushMessage = async function(caseDoc,message){
 
 
 /** Ενημερώνει το χρήστη για αλλαγή κατάστασης της υπόθεσης (not belongs exactly in the DB object...)  */
-DB.notifyUser ??= async (whistle) => {
-    if (whistle.submitter?.email==null || whistle.submitter?.email=="") {return false}
+DB.notifyUser ??= async (mob) => {
+    if (mob.submitter?.email==null || mob.submitter?.email=="") {return false}
     console.debug('Notifying user...');
 
     fetch(App.notifyUserUrl, {
@@ -165,7 +165,7 @@ DB.notifyUser ??= async (whistle) => {
         },
         body: JSON.stringify({
             userToken: await firebase.auth().currentUser.getIdToken(),
-            caseId: whistle.id,
+            caseId: mob.id,
         }),
     }).catch(error => console.warn("CORS error but notification sent"));    // CORS error, but the fetch request is sent
 };

@@ -6,8 +6,8 @@ window.App ??= {};
 let App = window.App;
 // let dynamicLinkDomain = window.location.hostname;
 App.verificationUrl ??= `${window.location.protocol}//${window.location.hostname}${App.port}/pages/verify.html`;
-// App.notifyUserUrl ??= 'http://127.0.0.1:81/whistleblowing-app/europe-west3/whistle/notifyuser';  // for local testing
-App.notifyUserUrl ??= 'https://europe-west3-whistleblowing-app.cloudfunctions.net/whistle/notifyuser';
+// App.notifyUserUrl ??= 'http://127.0.0.1:81/mobbing-app/europe-west3/mob/notifyuser';  // for local testing
+App.notifyUserUrl ??= 'https://europe-west3-mobbing-app.cloudfunctions.net/mob/notifyuser';
 
 
 
