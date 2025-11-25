@@ -7,8 +7,8 @@ import serviceAccount from './service-account.json' with {type: 'json'};
 
 // Initialize Firebase Admin (if not already initialized)
 const app = initializeApp({
-    projectId: 'whistleblowing-app',
-    appId: '1:430245849423:web:63820eef781768b28dbd3a',
+    projectId: 'mobbing-app',
+    appId: '1:783370041272:web:7df507da1b19dce86c414d',
     credential: admin.credential.cert(serviceAccount),
 });
 const auth = getAuth(app);

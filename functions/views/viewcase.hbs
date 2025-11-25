@@ -1,5 +1,5 @@
 
-<h1 class="center-left">{{t 'viewcase.title'}} {{whistle.id}}</h1>
+<h1 class="center-left">{{t 'viewcase.title'}} {{mob.id}}</h1>
 
 
 <section aria-label="{{t 'viewcase.caseDetails.ariaLabel'}}">
@@ -7,21 +7,21 @@
     <h2>{{t 'viewcase.caseDetails.heading'}}</h2>
 
     <label>{{t 'viewcase.caseDetails.violationDate'}}</label>
-    <p>{{tl "date" whistle.date}}</p>
+    <p>{{tl "date" mob.date}}</p>
 
     <label>{{t 'viewcase.caseDetails.individuals'}}</label>
-    <p>{{whistle.people}}</p>
+    <p>{{mob.people}}</p>
 
     <label>{{t 'viewcase.caseDetails.detailedDescription'}}</label>
-    <p>{{whistle.description}}</p>
+    <p>{{mob.description}}</p>
 
     <label>{{t 'viewcase.caseDetails.caseStatus'}}</label>
-    <p>{{tl "status" whistle.status}}</p>
+    <p>{{tl "status" mob.status}}</p>
 
-    {{#if whistle.filenames}}
+    {{#if mob.filenames}}
     <label>{{t 'viewcase.caseDetails.supportingFiles'}}</label>
     <ul>
-        {{#each whistle.filenames}}
+        {{#each mob.filenames}}
             <li>{{this}}</li>
         {{/each}}
     </ul>
@@ -37,7 +37,7 @@
 
     <h2>{{t 'viewcase.messages.heading'}}</h2>
 
-    {{#each whistle.messages}}
+    {{#each mob.messages}}
         <div class="row">
             <div class="col-md-2 pt-3">
                 <div class="text-muted">{{tl "messages" role}}</div>
@@ -60,7 +60,7 @@
                 {{t 'viewcase.messages.warningText'}}
             </div>
         </div>
-        <input type="hidden" name="caseId" value="{{whistle.id}}">
+        <input type="hidden" name="caseId" value="{{mob.id}}">
 
         <div class="mb-3 mt-3">
             <label for="evidence" class="form-label">{{t 'viewcase.messages.newEvidenceLabel'}}</label>

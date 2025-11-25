@@ -51,20 +51,20 @@ let Mappings = {
 //////////////       WHISTLE       ///////////////
 
 /**
- * Set of middleware functions to handle the whistle object.
+ * Set of middleware functions to handle the mob object.
  */
-let Whistle = {
+let Mob = {
 
     /**
-     * Middleware to construct the Whistle object from the request body and files. Also, saves the files temorarily.
-     * Must be used as such: Whistle.toDbObject.bind(Whistle), because this===undefined inside a middleware
+     * Middleware to construct the Mob object from the request body and files. Also, saves the files temorarily.
+     * Must be used as such: Mob.toDbObject.bind(Mob), because this===undefined inside a middleware
      * @param {*} req 
      * @param {*} res 
      * @returns 
     */
     toDbObject: async function (req, res, next) {
 
-        let whistle = {
+        let mob = {
             id: uid.rnd(),
             pin: pin.rnd(),
             // relationship: req.body.relationship,
@@ -92,19 +92,19 @@ let Whistle = {
             fs.writeFileSync(attachmentsFolder + file.originalname, file.buffer, (err) => {
                 if (err) throw err;
             }); 
-            whistle.filenames.push(file.originalname);
+            mob.filenames.push(file.originalname);
         });
     
-        res.whistle = whistle;
+        res.mob = mob;
         next();
     },
 
 
-    toHTMLTable: (whistle) => {
+    toHTMLTable: (mob) => {
         let table = '<table class="table"><tr><th>Key</th><th>Value</th></tr>';
-        for (let key in whistle) {
-          if (whistle.hasOwnProperty(key)) {
-            let value = whistle[key];
+        for (let key in mob) {
+          if (mob.hasOwnProperty(key)) {
+            let value = mob[key];
             // Check if the value is an array or an object
             if (typeof value === 'object') {
               value = JSON.stringify(value);
@@ -117,16 +117,16 @@ let Whistle = {
     },
 
 
-    toHumanFormat: function (whistle) {
-        // deep clone whistle object. Warning! If we change the status (messages), then it will change the original object!
-        let clientWhistle = structuredClone(whistle);
-        // clientWhistle.status = Mappings.status[whistle.status];  // Παλιά, η μετατροπή γινόταν εδώ, αλλά τώρα γίνεται στο view (i18n)
-        clientWhistle.messages.forEach(message=>{
+    toHumanFormat: function (mob) {
+        // deep clone mob object. Warning! If we change the status (messages), then it will change the original object!
+        let clientMob = structuredClone(mob);
+        // clientMob.status = Mappings.status[mob.status];  // Παλιά, η μετατροπή γινόταν εδώ, αλλά τώρα γίνεται στο view (i18n)
+        clientMob.messages.forEach(message=>{
             message.date = timestampToDate(message.date).toLocaleDateString();
             message.readByCompany = (message.role=="Υπεύθυνος") ? "blank" :
                 (message.role=="Καταγγέλλων" && message.readByCompany) ? "Διαβάστηκε" : "Δεν διαβάστηκε";
         });
-        return clientWhistle;
+        return clientMob;
     },
 
 
@@ -148,8 +148,8 @@ let Whistle = {
     },
 
 
-    deleteAttachments: async function (whistleOrMessage) {
-        let filenames = whistleOrMessage.filenames;
+    deleteAttachments: async function (mobOrMessage) {
+        let filenames = mobOrMessage.filenames;
         filenames.forEach(filename => {
             try{
                 fs.unlink(attachmentsFolder + filename, _=>{});
@@ -159,4 +159,4 @@ let Whistle = {
 };
 
 
-export default Whistle;
+export default Mob;
