@@ -37,7 +37,7 @@ const handlebarsConfig = {
         
         // Translated label
         // Label translation helper - για επιλογή από labels (στο language.json)
-        // Παράδειγμα: {{tl "status" whistle.status}} - θα γίνει labels.status[whistle.status], πχ labels.status.initial
+        // Παράδειγμα: {{tl "status" mob.status}} - θα γίνει labels.status[mob.status], πχ labels.status.initial
         tl: function(labelType, value, options) {
             const lang = options.data.root.lang;
             const key = `labels.${labelType}.${value}`;

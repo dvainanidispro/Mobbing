@@ -48,7 +48,7 @@ let Mappings = {
 };
 
 
-//////////////       WHISTLE       ///////////////
+//////////////       MOB       ///////////////
 
 /**
  * Set of middleware functions to handle the mob object.

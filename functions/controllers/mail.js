@@ -38,7 +38,7 @@ let aboutNewMob = async (mob) => {
         from: process.env.MAILFROM, // sender address
         to: company.recipients, // list of recipients
         bcc: JSON.parse(process.env.MAILBCC || '[]'), // add adminRecipients as BCC
-        subject: `Whistleblowing - Νέο περιστατικό - ${mob.id}`, // Subject line
+        subject: `Mobbing - Νέο περιστατικό - ${mob.id}`, // Subject line
         //   text: mob.description, // plain text body
         html: /*html*/`<h2>Νέο περιστατικό: ${mob.id}</h2>
                 <p>Παρακαλώ, συνδεθείτε στην κονσόλα διαχείρισης για να δείτε το νέο περιστατικό.</p>
@@ -66,7 +66,7 @@ let aboutNewUserMessage = async (mob) => {
         from: process.env.MAILFROM, // sender address
         to: company.recipients, // list of recipients
         bcc: JSON.parse(process.env.MAILBCC || '[]'), // add adminRecipients as BCC
-        subject: `Whistleblowing - Περιστατικό ${mob.id} - Νέο μήνυμα`, // Subject line
+        subject: `Mobbing - Περιστατικό ${mob.id} - Νέο μήνυμα`, // Subject line
         html: /*html*/`<h2>Υπάρχει νέο μήνυμα για το περιστατικό ${mob.id}.</h2>
                 <p>Παρακαλώ, συνδεθείτε στην κονσόλα διαχείρισης για να δείτε το νέο μήνυμα.</p>
         `, // html body
@@ -93,7 +93,7 @@ let aboutCaseUpdate = async (mob) => {
     let email = {
         from: process.env.MAILFROM, // sender address
         to: mob.submitter.email, // one recipient only!
-        subject: `Whistleblowing - Περιστατικό ${mob.id}`, // Subject line
+        subject: `Mobbing - Περιστατικό ${mob.id}`, // Subject line
         html: /*html*/`<h2>Περιστατικό ${mob.id}</h2>
                 <p>Υπάρχει νέα ενημέρωση ή νέο μήνυμα σχετικά με το περιστατικό ${mob.id}. </p>
                 <p>Παρακαλώ, εισέλθετε στη σελίδα με τον αριθμό του περιστατικού και το PIN που γνωρίζετε, για να δείτε τη νέα κατάσταση.</p>
