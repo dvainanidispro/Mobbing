@@ -60,7 +60,7 @@ server.get('/privacy', Firebase.company, (req, res) => {
 
 // Φόρμα υποβολής νέας αναφοράς
 server.get(['/form','/new'], Firebase.company, (req, res) => {
-    res.render('whistleform');
+    res.render('mobform');
 });
 
 
@@ -72,7 +72,7 @@ server.post(['/','/form','/new'], fileParser(), Firebase.company, Mob.toDbObject
 
     //# ACTIONS AFTER WHISTLE OBJECT CONSTRUCTION
     await Firebase.storeCase(whistle);                      // store the case in the database, whistle object is modified here
-    SendEmail.aboutNewWhistle(whistle);                     // send email, do not await the delivery
+    // SendEmail.aboutNewWhistle(whistle);                     // send email, do not await the delivery
     Mob.deleteAttachments(whistle);                     // delete attachments from disk, do not await
     res.render('newcaseconfirm',{whistle});                 // render the confirmation page
 });

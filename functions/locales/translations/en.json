@@ -21,7 +21,6 @@
       "channel2": "email to the following address <a href=\"mailto:{{company.inbox}}\">{{company.inbox}}</a>",
       "channel3": "personal meeting with the RRFR of the Organization upon request at <a href=\"mailto:{{company.inbox}}\">{{company.inbox}}</a> or on the telephone line {{company.phone}}",
       "channel4": "telephone call on the telephone line <a href=\"tel:{{company.phone}}\">{{company.phone}}</a>",
-      "torInfo": "If you wish to remain anonymous, you will need to use Tor software to submit a report to this website. <a href=\"https://www.torproject.org/download/\">You can download the Tor browser here</a>. It works like Safari, Chrome or other browsers, except that Τor hides your digital footprints. Once you download and install Tor, you can enter <a id=\"onionlink\"></a> using Τοr, so your web address will remain hidden.",
       "closeButton": "CLOSE",
       "proceedButton": "PROCEED"
     },
@@ -165,26 +164,16 @@
   "welcome": {
     "message": "Welcome to the anonymous reporting service for Code of Ethics violations of your organization. The service is provided by Computer Studio S.A."
   },
-  "whistleform": {
+  "mobform": {
     "form": {
       "title": "Submit new report",
       "organizationLabel": "Organization",
       "securityWarning": "Before proceeding, make sure that you reached this page from the official website of your organization and not from another source (such as through a link in an email you received), because the report may be sent to an untrusted destination and not to the responsible person of your organization."
     },
-    "relationship": {
-      "question1": "Have you acquired information on the reported facts in a work-related context of the Organization",
-      "question2": "; *",
-      "explanation": "'Work-related context' means current, past or prospective work activities in the private or public sector through which, irrespective of the nature of those activities, you have acquired information on breaches of law 4990/2022 and within which you could suffer retaliation if you report such information.",
-      "ariaLabel": "Work relationship",
-      "selectPlaceholder": "Please select...",
-      "optionYes": "Yes",
-      "optionNo": "No",
-      "invalidMessage": "Since you have not acquired information about the reported facts within the work-related context of your Organization, you cannot submit a report through this platform. However, you have the option to submit a complaint to the general complaints platform of the Hellenic Data Protection Authority"
-    },
     "legal": {
-      "title": "Important information *",
-      "description1": "If your report does not fall under any of the options which are the scope of Law 4990/2022 (Government Gazette, Series I, No 210) but there is evidence of a criminal offence being prosecuted ex officio, then your report shall be transmitted to the competent prosecuting authorities, informing you thereof.",
-      "description2": "Please note that in the above cases the conditions for protection under Law 4990/2022 (Government Gazette, Series I, No 210) are not met.",
+      "title": "Important Notice *",
+      "description1": "If your report contains indications of a criminal offense that is prosecuted ex officio, then your report may be transmitted to the competent prosecutorial authorities, informing you accordingly.",
+      "description2": "",
       "confirmation": "I have read the above information notice"
     },
     "incident": {
@@ -209,13 +198,10 @@
       "confirmation": "I have read and understood the Personal Data Protection Policy"
     },
     "contact": {
-      "question": "Do you wish to provide your contact details?",
-      "explanation": "The submission of your data is not mandatory. You can submit your report anonymously. The information provided in either the named or the anonymous report will remain confidential.",
-      "namedReportLabel": "I wish to make a named report.",
-      "firstNameLabel": "First Name",
-      "lastNameLabel": "Last Name",
-      "emailLabel": "E-mail",
-      "phoneLabel": "Phone",
+      "firstNameLabel": "First Name *",
+      "lastNameLabel": "Last Name *",
+      "emailLabel": "E-mail *",
+      "phoneLabel": "Phone *",
       "notificationLabel": "I wish to be notified via e-mail and/or SMS about the progress of the case, possible questions, etc.",
       "notificationNote": "If you do not wish to receive notifications, you will need to visit the platform to track the progress."
     },

@@ -47,9 +47,6 @@
                 <li>{{{t 'home.modal.channel3' company=company}}}</li>
                 <li>{{{t 'home.modal.channel4' company=company}}} ({{tf company "hours"}})</li>
             </ul>
-            <p id="torinfo">
-                {{{t 'home.modal.torInfo'}}}
-            </p>
 
           </div>
 
@@ -100,8 +97,5 @@
         let onionLink = onionWebsite + '/home?company=' + company;
         document.getElementById("onionlink").innerText = onionLink;
         document.getElementById("onionlink").href = onionLink;
-    }
-    if (window.location.href.includes('.onion')) {
-        document.getElementById("torinfo").style.display = "none";
     }
 </script>

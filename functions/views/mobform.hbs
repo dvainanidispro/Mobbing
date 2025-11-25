@@ -1,0 +1,195 @@
+
+    <form action="" method="post" enctype="multipart/form-data" id="mobbing-form">
+            <h1 class="center-left">{{t 'mobform.form.title'}}</h1>
+
+          
+            <input type="hidden" readonly value="{{company.id}}" id="company" name="company">
+          
+        
+
+            <div class="">
+                <label for="companyName">{{t 'mobform.form.organizationLabel'}}</label>
+                <input type="text" class="form-control" id="companyName" name="companyName" value="{{tf company "name"}}" disabled>
+            </div>
+            <small>{{t 'mobform.form.securityWarning'}}</small>
+            <hr>
+            
+            <div>
+
+                <div class="mb-3"><fieldset>
+                    <legend class="mt-2">{{t 'mobform.incident.dateQuestion'}}</legend>
+                    <div class="form-check">
+                        <input class="form-check-input generaldate" type="radio" name="datetype" value="before5years" id="before5years">
+                        <label class="form-check-label" for="before5years">
+                            {{t 'mobform.incident.moreThan5Years'}}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input generaldate" type="radio" name="datetype" value="recent5years" id="recent5years" required>
+                        <label class="form-check-label" for="recent5years">
+                            {{t 'mobform.incident.lessThan5Years'}}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="datetype" value="specificdate" id="specificdate" autocomplete="off" aria-describedby="specificdateElaborate">
+                        <label class="form-check-label" for="specificdate">
+                            {{t 'mobform.incident.specificDate'}}
+                        </label>
+                        <p hidden id="specificdateElaborate">{{t 'mobform.incident.datePickerInstructions'}}</p>
+                        <div id="specificdatepicker" class="d-none ms-5">
+                            <input type="text" class="form-control" name="dateFacade" id="dateFacade" placeholder="{{t 'mobform.incident.datePlaceholder'}}" onfocus="actualDate.showPicker()" onclick="try{actualDate.showPicker()}catch(e){}" autocomplete="off">
+                            <input name="date" type="date" id="actualDate" class="form-control input-hidden" onchange="dateFacade.value=facade(this.value)">
+                        </div>
+                    </div>
+
+                    </fieldset></div>
+            </div>
+
+          
+      
+            <div class="">
+                <label for="people" class="form-label">{{t 'mobform.incident.peopleLabel'}}</label>
+                <input type="text" class="form-control" id="people" name="people" placeholder="{{t 'mobform.incident.peoplePlaceholder'}}" maxlength="100" autocomplete="off">
+            </div>
+      
+            <div class="">
+                <label for="description" class="form-label">{{t 'mobform.incident.descriptionLabel'}}</label>
+                <small>{{t 'mobform.incident.descriptionHelp'}}</small>
+                <textarea class="form-control" id="description" name="description" placeholder="{{t 'mobform.incident.descriptionPlaceholder'}}" rows="4" required></textarea>
+            </div>
+           
+            <div class="">
+                <label for="evidence" class="form-label">{{t 'mobform.incident.evidenceLabel'}}</label>
+                <small>{{t 'mobform.incident.evidenceHelp'}}</small>
+                <input type="file" class="form-control" id="evidence" name="evidence" multiple data-input-size="10">
+            </div>
+
+            <div class="">
+                <label class="form-label mt-4">{{t 'mobform.legal.title'}}</label>
+                <small>{{t 'mobform.legal.description1'}}<br>
+                {{t 'mobform.legal.description2'}}</small>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="notice" id="legal" required>
+                    <label class="form-check-label" for="legal">
+                        {{t 'mobform.legal.confirmation'}}
+                    </label>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="">
+                <label class="form-label mt-4">{{t 'mobform.privacy.title'}}</label>
+                <small>{{t 'mobform.privacy.description'}}</small>
+
+                <a href="privacy?company={{company.id}}" class="d-inline-flex align-items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                </svg>{{t 'mobform.privacy.readMoreLink'}}</a>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="gdpr" id="gdpr" required>
+                    <label class="form-check-label" for="gdpr">
+                        {{t 'mobform.privacy.confirmation'}}
+                    </label>
+                </div>
+            </div>
+        
+
+
+
+            <div class="">
+                <label for="firstname" class="form-label mt-2">{{t 'mobform.contact.firstNameLabel'}}</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" maxlength="50" required>
+            </div>
+
+            <div class="">
+                <label for="lastname" class="form-label mt-2">{{t 'mobform.contact.lastNameLabel'}}</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" maxlength="50" required>
+            </div>
+      
+            <div class="">
+                <label for="email" class="form-label mt-2">{{t 'mobform.contact.emailLabel'}}</label>
+                <input type="email" class="form-control" id="email" name="email" maxlength="50" required>
+            </div>
+
+            <div class="">
+                <label for="phone" class="form-label mt-2">{{t 'mobform.contact.phoneLabel'}}</label>
+                <input type="text" class="form-control" id="phone" name="phone" maxlength="50" >
+            </div>
+
+            <div class="form-check my-3">
+                <input class="form-check-input" type="checkbox" name="notify" value="true" id="notify">
+                <label class="form-check-label" for="notify">
+                    {{t 'mobform.contact.notificationLabel'}}
+                    <small>{{t 'mobform.contact.notificationNote'}}</small>
+                </label>
+            </div>
+
+            <hr>
+      
+            <div>
+                <small>{{t 'mobform.submission.finalNote'}}</small>
+            </div>
+            <div class="d-flex">
+                <button type="submit" id="submit-btn" class="btn btn-primary my-3">{{t 'mobform.submission.submitButton'}}</button>
+                <div id="post-spinner" class="m-3 spinner-border text-primary d-none" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+
+            
+              
+         
+      </form>
+
+
+
+
+    <script>
+        console.debug('Company ID: ' + document.getElementById('company').value);
+        
+        // Date facade
+        let facade = (inputDate) => isNaN(new Date(inputDate)) ? '' : (new Date(inputDate)).toLocaleDateString('el-GR', { dateStyle: 'full' });
+        
+        // Επιλογές ημερομηνίας
+        document.getElementsByName('datetype').forEach(radio=>{
+            radio.addEventListener('change',function(e){
+                if(e.target.value == 'specificdate'){
+                    document.getElementById('specificdatepicker').classList.remove('d-none');
+                    document.getElementById('dateFacade').setAttribute('required',true);
+                }else{
+                    document.getElementById('specificdatepicker').classList.add('d-none');
+                    document.getElementById('dateFacade').removeAttribute('required');
+                }
+            });
+        });
+
+        // Loading spinner
+        document.getElementById('submit-btn').addEventListener('click',()=>{
+            if ( document.getElementById('mobbing-form').reportValidity() ) {     // if form is valid
+                document.getElementById('post-spinner').classList.remove('d-none');     // show spinner
+            }
+        });
+
+        // Έλεγχος ορθότητας αρχείου που ανεβαίνει
+        document.querySelectorAll('input[data-input-size]').forEach(inputElement=>{
+            inputElement.addEventListener("change",function(e){
+                let maxSizeInMB = parseInt(this.getAttribute("data-input-size"));
+                let maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+                let sumSize = 0;
+                [...this.files].forEach(file=>{
+                    sumSize += file.size;
+                    if(file.size > maxSizeInBytes){
+                        alert("Το αρχείο " + file.name + " υπερβαίνει το μέγιστο όριο των " + maxSizeInMB + " MB");
+                        this.value = "";
+                    } else if (sumSize > maxSizeInBytes) {
+                        alert("Το συνολικό μέγεθος των αρχείων υπερβαίνει το μέγιστο όριο των " + maxSizeInMB + " MB");
+                        this.value = "";
+                    }
+                });
+            });
+        });
+
+    </script>
+      
+      

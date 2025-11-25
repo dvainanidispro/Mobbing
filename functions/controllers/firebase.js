@@ -4,7 +4,7 @@ import { onDocumentDeleted } from "firebase-functions/v2/firestore";
 firebase.initializeApp();    // Make sure you call initializeApp() before using any of the Firebase services.
 const db = getFirestore();
 import { getStorage } from 'firebase-admin/storage';
-// const storage = getStorage().bucket();
+const storage = getStorage().bucket();
 
 
 /** The folder with the temporary attachments */
